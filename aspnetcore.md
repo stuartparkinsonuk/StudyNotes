@@ -3,7 +3,7 @@
 ```Program.cs``` contains the ```Main``` method which is the application starting point.
 This uses ```WebHostBuilder``` to build a web hosting app using extension methods, eg.
 
-``` C#
+``` c#
  public class Program
     {
         public static void Main(string[] args)
