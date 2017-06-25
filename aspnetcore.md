@@ -1,7 +1,8 @@
-# Startup
+# ASP.net Core Web Application
 
 ## Program.cs
 `Program.cs` contains the `Main` method which is the application starting point.
+
 This uses `WebHostBuilder` to build a web hosting app using extension methods. The default `Program.cs` file created by the new project template is shown below.
 
 ``` c#
@@ -23,10 +24,15 @@ This uses `WebHostBuilder` to build a web hosting app using extension methods. T
 ```
 
 `.UseKestrel()` - use the Kestrel web server (can change to use others)
+
 `.UseContentRoot(Directory.GetCurrentDirectory())` - tells the server where the root directory for content is
+
 `UseIISIntegration()` - 
+
 `UseStartup<Startup>()` - tells server which class to use for startup configuration (in this case the `Startup` class defined in `Startup.cs`)
+
 `UseApplicationInsights()` -
+
 `Build();` - now go and build us a webserver that we can run with `host.Run();`
 
 
