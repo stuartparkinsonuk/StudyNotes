@@ -23,12 +23,9 @@ This uses `WebHostBuilder` to build a web hosting app using extension methods. T
     }
 ```
 
-`.UseKestrel()` - use the Kestrel web server (can change to use others)
-
-`.UseContentRoot(Directory.GetCurrentDirectory())` - tells the server where the root directory for content is
-
+`.UseKestrel()` - use the Kestrel web server (can change to use others) 
+`.UseContentRoot(Directory.GetCurrentDirectory())` - tells the server where the root directory for content is 
 `UseIISIntegration()` - 
-
 `UseStartup<Startup>()` - tells server which class to use for startup configuration (in this case the `Startup` class defined in `Startup.cs`)
 
 `UseApplicationInsights()` -
