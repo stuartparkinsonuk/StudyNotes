@@ -1,0 +1,44 @@
+{
+    "docs": [
+        {
+            "location": "/",
+            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Home"
+        },
+        {
+            "location": "/#welcome-to-mkdocs",
+            "text": "For full documentation visit  mkdocs.org .",
+            "title": "Welcome to MkDocs"
+        },
+        {
+            "location": "/#commands",
+            "text": "mkdocs new [dir-name]  - Create a new project.  mkdocs serve  - Start the live-reloading docs server.  mkdocs build  - Build the documentation site.  mkdocs help  - Print this help message.",
+            "title": "Commands"
+        },
+        {
+            "location": "/#project-layout",
+            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "title": "Project layout"
+        },
+        {
+            "location": "/aspnetcore/",
+            "text": "ASP.net Core Web Application\n\n\nProgram.cs\n\n\nProgram.cs\n contains the \nMain\n method which is the application starting point.\n\n\nThis uses \nWebHostBuilder\n to build a web hosting app using extension methods. The default \nProgram.cs\n file created by the new project template is shown below.\n\n\n public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var host = new WebHostBuilder()\n                .UseKestrel()\n                .UseContentRoot(Directory.GetCurrentDirectory())\n                .UseIISIntegration()\n                .UseStartup<Startup>()\n                .UseApplicationInsights()\n                .Build();\n\n            host.Run();\n        }\n    }\n\n\n\n\n.UseKestrel()\n - use the Kestrel web server (can change to use others) \n\n.UseContentRoot(Directory.GetCurrentDirectory())\n - tells the server where the root directory for content is \n\nUseIISIntegration()\n - \n\nUseStartup<Startup>()\n - tells server which class to use for startup configuration (in this case the \nStartup\n class defined in \nStartup.cs\n)\n\n\nUseApplicationInsights()\n -\n\n\nBuild();\n - now go and build us a webserver that we can run with \nhost.Run();\n\n\nStartup.cs\n\n\nStartup.cs\n defines the request handling pipeline, and must contain the following methods:\n\n\npublic void ConfigureServices(IServiceCollection services) {...}\npublic void Configure(IApplicationBuilder app) {...}",
+            "title": "Aspnetcore"
+        },
+        {
+            "location": "/aspnetcore/#aspnet-core-web-application",
+            "text": "",
+            "title": "ASP.net Core Web Application"
+        },
+        {
+            "location": "/aspnetcore/#programcs",
+            "text": "Program.cs  contains the  Main  method which is the application starting point.  This uses  WebHostBuilder  to build a web hosting app using extension methods. The default  Program.cs  file created by the new project template is shown below.   public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var host = new WebHostBuilder()\n                .UseKestrel()\n                .UseContentRoot(Directory.GetCurrentDirectory())\n                .UseIISIntegration()\n                .UseStartup<Startup>()\n                .UseApplicationInsights()\n                .Build();\n\n            host.Run();\n        }\n    }  .UseKestrel()  - use the Kestrel web server (can change to use others)  .UseContentRoot(Directory.GetCurrentDirectory())  - tells the server where the root directory for content is  UseIISIntegration()  -  UseStartup<Startup>()  - tells server which class to use for startup configuration (in this case the  Startup  class defined in  Startup.cs )  UseApplicationInsights()  -  Build();  - now go and build us a webserver that we can run with  host.Run();",
+            "title": "Program.cs"
+        },
+        {
+            "location": "/aspnetcore/#startupcs",
+            "text": "Startup.cs  defines the request handling pipeline, and must contain the following methods:  public void ConfigureServices(IServiceCollection services) {...}\npublic void Configure(IApplicationBuilder app) {...}",
+            "title": "Startup.cs"
+        }
+    ]
+}
