@@ -16,7 +16,7 @@
     
     
       
-        <title>Aspnetcore - My Docs</title>
+        <title>Programming concepts - My Docs</title>
       
     
     
@@ -73,7 +73,7 @@
             
               
             
-            Aspnetcore
+            Programming concepts
           
         </span>
       </div>
@@ -144,54 +144,11 @@
       
       
 
-  
 
-
-  <li class="md-nav__item md-nav__item--active">
-    
-    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
-    
-      
-    
-    
-      <label class="md-nav__link md-nav__link--active" for="toc">
-        Aspnetcore
-      </label>
-    
-    <a href="./" title="Aspnetcore" class="md-nav__link md-nav__link--active">
+  <li class="md-nav__item">
+    <a href="../aspnetcore/" title="Aspnetcore" class="md-nav__link">
       Aspnetcore
     </a>
-    
-      
-<nav class="md-nav md-nav--secondary">
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="toc">Table of contents</label>
-    <ul class="md-nav__list" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#programcs" title="Program.cs" class="md-nav__link">
-    Program.cs
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#startupcs" title="Startup.cs" class="md-nav__link">
-    Startup.cs
-  </a>
-  
-</li>
-      
-      
-      
-    </ul>
-  
-</nav>
-    
   </li>
 
     
@@ -211,11 +168,67 @@
       
       
 
+  
 
-  <li class="md-nav__item">
-    <a href="../programming-concepts/" title="Programming concepts" class="md-nav__link">
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="toc">
+        Programming concepts
+      </label>
+    
+    <a href="./" title="Programming concepts" class="md-nav__link md-nav__link--active">
       Programming concepts
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#dependency-injection-inversion-of-control" title="Dependency Injection / Inversion of Control" class="md-nav__link">
+    Dependency Injection / Inversion of Control
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-and-why" title="What and Why?" class="md-nav__link">
+    What and Why?
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interfaces" title="Interfaces" class="md-nav__link">
+    Interfaces
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+      
+      
+    </ul>
+  
+</nav>
+    
   </li>
 
     
@@ -240,16 +253,29 @@
     <ul class="md-nav__list" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#programcs" title="Program.cs" class="md-nav__link">
-    Program.cs
+  <a href="#dependency-injection-inversion-of-control" title="Dependency Injection / Inversion of Control" class="md-nav__link">
+    Dependency Injection / Inversion of Control
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-and-why" title="What and Why?" class="md-nav__link">
+    What and Why?
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#startupcs" title="Startup.cs" class="md-nav__link">
-    Startup.cs
+        
+          <li class="md-nav__item">
+  <a href="#interfaces" title="Interfaces" class="md-nav__link">
+    Interfaces
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -268,11 +294,32 @@
               
                 
                 
-                <h1 id="aspnet-core-web-application">ASP.net Core Web Application<a class="headerlink" href="#aspnet-core-web-application" title="Permanent link">&para;</a></h1>
-<p>Visual Studio: New Project - ASP.NET CoreWeb Application (.NET Core)</p>
-<h2 id="programcs">Program.cs<a class="headerlink" href="#programcs" title="Permanent link">&para;</a></h2>
-<p><code class="codehilite">Program.cs</code> contains the <code class="codehilite">Main</code> method which is the application starting point.</p>
-<p>This uses <code class="codehilite">WebHostBuilder</code> to build a web hosting app using extension methods. The default <code class="codehilite">Program.cs</code> file created by the new project template is shown below.</p>
+                <h1 id="programming-concepts">Programming Concepts<a class="headerlink" href="#programming-concepts" title="Permanent link">&para;</a></h1>
+<hr />
+<h2 id="dependency-injection-inversion-of-control">Dependency Injection / Inversion of Control<a class="headerlink" href="#dependency-injection-inversion-of-control" title="Permanent link">&para;</a></h2>
+<p><a href="https://docs.microsoft.com/en-us/aspnet/core/fundamentals/dependency-injection">Introduction to Dependency Injection in ASP.NET Core</a> - Microsoft page</p>
+<h3 id="what-and-why">What and Why?<a class="headerlink" href="#what-and-why" title="Permanent link">&para;</a></h3>
+<blockquote>
+<p>A <strong>dependency</strong> is another class that the code you are writing depends on.</p>
+</blockquote>
+<p>Say you are writing an app and you want to log certain performance information - maybe you get current weather data from a web service and you want to log how long each request takes. You write a class to do that logging and call it <code class="codehilite">Logger</code> with a <code class="codehilite">Log(string message)</code> method which writes your message to a file.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">Logger</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// write message to log file</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Here is the class which gets the weather data and logs the time taken. </p>
 <table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
  2
  3
@@ -285,39 +332,34 @@
 10
 11
 12
-13
-14
-15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyClass</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Logger</span><span class="p">();</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">GetWeather</span><span class="p">()</span>
     <span class="p">{</span>
-        <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
-        <span class="p">{</span>
-            <span class="kt">var</span> <span class="n">host</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WebHostBuilder</span><span class="p">()</span>
-                <span class="p">.</span><span class="n">UseKestrel</span><span class="p">()</span>
-                <span class="p">.</span><span class="n">UseContentRoot</span><span class="p">(</span><span class="n">Directory</span><span class="p">.</span><span class="n">GetCurrentDirectory</span><span class="p">())</span>
-                <span class="p">.</span><span class="n">UseIISIntegration</span><span class="p">()</span>
-                <span class="p">.</span><span class="n">UseStartup</span><span class="p">&lt;</span><span class="n">Startup</span><span class="p">&gt;()</span>
-                <span class="p">.</span><span class="n">UseApplicationInsights</span><span class="p">()</span>
-                <span class="p">.</span><span class="n">Build</span><span class="p">();</span>
-
-            <span class="n">host</span><span class="p">.</span><span class="n">Run</span><span class="p">();</span>
-        <span class="p">}</span>
+        <span class="n">Stopwatch</span> <span class="n">sw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stopwatch</span><span class="p">();</span>
+        <span class="n">sw</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+        <span class="c1">// Get weather info from web service ...</span>
+        <span class="n">sw</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+        <span class="n">logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;Webservice time = {sw.Elapsed}&quot;</span><span class="p">);</span>
     <span class="p">}</span>
+<span class="p">}</span>
 </pre></div>
 </td></tr></table>
 
-<p><code class="codehilite"><span class="na">.UseKestrel</span><span class="p">()</span></code> - use the Kestrel web server (can change to use others)<br />
-<code class="codehilite"><span class="na">.UseContentRoot</span><span class="p">(</span><span class="no">Directory.GetCurrentDirectory</span><span class="p">())</span></code> - tells the server where the root directory for content is<br />
-<code class="codehilite">UseIISIntegration()</code> -<br />
-<code class="codehilite">UseStartup&lt;Startup&gt;()</code> - tells server which class to use for startup configuration (in this case the <code class="codehilite">Startup</code> class defined in <code class="codehilite">Startup.cs</code>)<br />
-<code class="codehilite">UseApplicationInsights()</code> -<br />
-<code class="codehilite">Build();</code> - now go and build us a webserver that we can run with <code class="codehilite">host.Run();</code></p>
-<h2 id="startupcs">Startup.cs<a class="headerlink" href="#startupcs" title="Permanent link">&para;</a></h2>
-<p><code class="codehilite">Startup.cs</code> defines the request handling pipeline, and must contain the following methods:</p>
-<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
-2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span> <span class="p">{...}</span>
-<span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span> <span class="p">{...}</span>
-</pre></div>
-</td></tr></table>
+<p>Your <code class="codehilite">MyClass</code> object now <strong>depends</strong> on the <code class="codehilite">Logger</code> class. The <code class="codehilite">Logger</code> class is hard-coded into you program. We say that there is 'tight coupling' between the <code class="codehilite">MyClass</code> and the <code class="codehilite">Logger</code> classes.</p>
+<p>Now this is all well and good for a small app that is not going to change, but has several drawbacks.</p>
+<ol>
+<li>It is not easy to test <code class="codehilite">MyClass</code> without having to open up the log file to see what was actually written to it.</li>
+<li>It is not easy to change the logger if we decide that instead of logging to a file we want to log to a database instead.</li>
+</ol>
+<p>It would be nice if we could just write <code class="codehilite">MyClass</code> so that it could use any logger object that we decided to give it. The we could use a test logger for testing, another for logging to file, and another for writing the messages to a database, and so on. It would be really nice if, when we wrote <code class="codehilite">MyClass</code>, we didn't need to know anything about the logger that would ultimately be used other than all we had to do was pass it a message.</p>
+<p>The problem, of course, is the line</p>
+<p><code class="codehilite">private Logger logger = new Logger();</code></p>
+<p>To write this line of code we need a reference to the <code class="codehilite">Logger</code> class dependency, and once we have written it we can't change the logger without changing the <code class="codehilite">MyClass</code> source code. Instead of hard-coding the dependancy, we would like to be able to pass the dependency in to <code class="codehilite">MyClass</code> when we run our code.</p>
+<h3 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">&para;</a></h3>
+<p>An <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface">Interface</a> difines the signatures of methods, properties, events or indexers of a class. A class or struct that implements the interface must implement the members of the interface that are specified in the interface definition.</p>
                 
                   
                 
@@ -336,7 +378,7 @@
     <div class="md-footer-nav">
       <nav class="md-footer-nav__inner md-grid">
         
-          <a href=".." title="Home" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+          <a href="../links/" title="Links" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
             <div class="md-flex__cell md-flex__cell--shrink">
               <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
             </div>
@@ -345,25 +387,11 @@
                 <span class="md-footer-nav__direction">
                   Previous
                 </span>
-                Home
-              </span>
-            </div>
-          </a>
-        
-        
-          <a href="../links/" title="Links" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
-            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
-              <span class="md-flex__ellipsis">
-                <span class="md-footer-nav__direction">
-                  Next
-                </span>
                 Links
               </span>
             </div>
-            <div class="md-flex__cell md-flex__cell--shrink">
-              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
-            </div>
           </a>
+        
         
       </nav>
     </div>

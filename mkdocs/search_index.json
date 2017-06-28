@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/",
-            "text": "Welcome to MkDocs\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\n\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "text": "Welcome to MkDocs\n\u00b6\n\n\nFor full documentation visit \nmkdocs.org\n.\n\n\nCommands\n\u00b6\n\n\n\n\nmkdocs new [dir-name]\n - Create a new project.\n\n\nmkdocs serve\n - Start the live-reloading docs server.\n\n\nmkdocs build\n - Build the documentation site.\n\n\nmkdocs help\n - Print this help message.\n\n\n\n\nProject layout\n\u00b6\n\n\n1\n2\n3\n4\nmkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
             "title": "Home"
         },
         {
@@ -17,28 +17,68 @@
         },
         {
             "location": "/#project-layout",
-            "text": "mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
+            "text": "1\n2\n3\n4 mkdocs.yml    # The configuration file.\ndocs/\n    index.md  # The documentation homepage.\n    ...       # Other markdown pages, images and other files.",
             "title": "Project layout"
         },
         {
             "location": "/aspnetcore/",
-            "text": "ASP.net Core Web Application\n\n\nProgram.cs\n\n\nProgram.cs\n contains the \nMain\n method which is the application starting point.\n\n\nThis uses \nWebHostBuilder\n to build a web hosting app using extension methods. The default \nProgram.cs\n file created by the new project template is shown below.\n\n\n public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var host = new WebHostBuilder()\n                .UseKestrel()\n                .UseContentRoot(Directory.GetCurrentDirectory())\n                .UseIISIntegration()\n                .UseStartup<Startup>()\n                .UseApplicationInsights()\n                .Build();\n\n            host.Run();\n        }\n    }\n\n\n\n\n.UseKestrel()\n - use the Kestrel web server (can change to use others) \n\n.UseContentRoot(Directory.GetCurrentDirectory())\n - tells the server where the root directory for content is \n\nUseIISIntegration()\n - \n\nUseStartup<Startup>()\n - tells server which class to use for startup configuration (in this case the \nStartup\n class defined in \nStartup.cs\n)\n\n\nUseApplicationInsights()\n -\n\n\nBuild();\n - now go and build us a webserver that we can run with \nhost.Run();\n\n\nStartup.cs\n\n\nStartup.cs\n defines the request handling pipeline, and must contain the following methods:\n\n\npublic void ConfigureServices(IServiceCollection services) {...}\npublic void Configure(IApplicationBuilder app) {...}",
+            "text": "ASP.net Core Web Application\n\u00b6\n\n\nVisual Studio: New Project - ASP.NET CoreWeb Application (.NET Core)\n\n\nProgram.cs\n\u00b6\n\n\nProgram.cs\n contains the \nMain\n method which is the application starting point.\n\n\nThis uses \nWebHostBuilder\n to build a web hosting app using extension methods. The default \nProgram.cs\n file created by the new project template is shown below.\n\n\n 1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15\n \npublic\n \nclass\n \nProgram\n\n    \n{\n\n        \npublic\n \nstatic\n \nvoid\n \nMain\n(\nstring\n[]\n \nargs\n)\n\n        \n{\n\n            \nvar\n \nhost\n \n=\n \nnew\n \nWebHostBuilder\n()\n\n                \n.\nUseKestrel\n()\n\n                \n.\nUseContentRoot\n(\nDirectory\n.\nGetCurrentDirectory\n())\n\n                \n.\nUseIISIntegration\n()\n\n                \n.\nUseStartup\n<\nStartup\n>()\n\n                \n.\nUseApplicationInsights\n()\n\n                \n.\nBuild\n();\n\n\n            \nhost\n.\nRun\n();\n\n        \n}\n\n    \n}\n\n\n\n\n\n\n\n.UseKestrel\n()\n - use the Kestrel web server (can change to use others)\n\n\n.UseContentRoot\n(\nDirectory.GetCurrentDirectory\n())\n - tells the server where the root directory for content is\n\n\nUseIISIntegration()\n -\n\n\nUseStartup<Startup>()\n - tells server which class to use for startup configuration (in this case the \nStartup\n class defined in \nStartup.cs\n)\n\n\nUseApplicationInsights()\n -\n\n\nBuild();\n - now go and build us a webserver that we can run with \nhost.Run();\n\n\nStartup.cs\n\u00b6\n\n\nStartup.cs\n defines the request handling pipeline, and must contain the following methods:\n\n\n1\n2\npublic\n \nvoid\n \nConfigureServices\n(\nIServiceCollection\n \nservices\n)\n \n{...}\n\n\npublic\n \nvoid\n \nConfigure\n(\nIApplicationBuilder\n \napp\n)\n \n{...}",
             "title": "Aspnetcore"
         },
         {
             "location": "/aspnetcore/#aspnet-core-web-application",
-            "text": "",
+            "text": "Visual Studio: New Project - ASP.NET CoreWeb Application (.NET Core)",
             "title": "ASP.net Core Web Application"
         },
         {
             "location": "/aspnetcore/#programcs",
-            "text": "Program.cs  contains the  Main  method which is the application starting point.  This uses  WebHostBuilder  to build a web hosting app using extension methods. The default  Program.cs  file created by the new project template is shown below.   public class Program\n    {\n        public static void Main(string[] args)\n        {\n            var host = new WebHostBuilder()\n                .UseKestrel()\n                .UseContentRoot(Directory.GetCurrentDirectory())\n                .UseIISIntegration()\n                .UseStartup<Startup>()\n                .UseApplicationInsights()\n                .Build();\n\n            host.Run();\n        }\n    }  .UseKestrel()  - use the Kestrel web server (can change to use others)  .UseContentRoot(Directory.GetCurrentDirectory())  - tells the server where the root directory for content is  UseIISIntegration()  -  UseStartup<Startup>()  - tells server which class to use for startup configuration (in this case the  Startup  class defined in  Startup.cs )  UseApplicationInsights()  -  Build();  - now go and build us a webserver that we can run with  host.Run();",
+            "text": "Program.cs  contains the  Main  method which is the application starting point.  This uses  WebHostBuilder  to build a web hosting app using extension methods. The default  Program.cs  file created by the new project template is shown below.   1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\n14\n15   public   class   Program \n     { \n         public   static   void   Main ( string []   args ) \n         { \n             var   host   =   new   WebHostBuilder () \n                 . UseKestrel () \n                 . UseContentRoot ( Directory . GetCurrentDirectory ()) \n                 . UseIISIntegration () \n                 . UseStartup < Startup >() \n                 . UseApplicationInsights () \n                 . Build (); \n\n             host . Run (); \n         } \n     }    .UseKestrel ()  - use the Kestrel web server (can change to use others)  .UseContentRoot ( Directory.GetCurrentDirectory ())  - tells the server where the root directory for content is  UseIISIntegration()  -  UseStartup<Startup>()  - tells server which class to use for startup configuration (in this case the  Startup  class defined in  Startup.cs )  UseApplicationInsights()  -  Build();  - now go and build us a webserver that we can run with  host.Run();",
             "title": "Program.cs"
         },
         {
             "location": "/aspnetcore/#startupcs",
-            "text": "Startup.cs  defines the request handling pipeline, and must contain the following methods:  public void ConfigureServices(IServiceCollection services) {...}\npublic void Configure(IApplicationBuilder app) {...}",
+            "text": "Startup.cs  defines the request handling pipeline, and must contain the following methods:  1\n2 public   void   ConfigureServices ( IServiceCollection   services )   {...}  public   void   Configure ( IApplicationBuilder   app )   {...}",
             "title": "Startup.cs"
+        },
+        {
+            "location": "/links/",
+            "text": "Useful Links\n\u00b6\n\n\n\n\nMarkdown and MKDocs\n\u00b6\n\n\nGitHub: \nMastering Markdown\n and\n\nBasic writing and formatting syntax\n\nAlso \nMarkdown Cheatsheet\n\n\nMKDocs is a utility to build a static web site out of markdown documents which can then be\nviewed locally or hosted on \nGitHub Pages\n.\n\n\nMKDocs\n\n\nMaterial\n is a theme with added goodies that works well with Markdown.\n\n\nMarkdown requires \nPython\n to be installed on the machine.",
+            "title": "Links"
+        },
+        {
+            "location": "/links/#useful-links",
+            "text": "",
+            "title": "Useful Links"
+        },
+        {
+            "location": "/links/#markdown-and-mkdocs",
+            "text": "GitHub:  Mastering Markdown  and Basic writing and formatting syntax \nAlso  Markdown Cheatsheet  MKDocs is a utility to build a static web site out of markdown documents which can then be\nviewed locally or hosted on  GitHub Pages .  MKDocs  Material  is a theme with added goodies that works well with Markdown.  Markdown requires  Python  to be installed on the machine.",
+            "title": "Markdown and MKDocs"
+        },
+        {
+            "location": "/programming-concepts/",
+            "text": "Programming Concepts\n\u00b6\n\n\n\n\nDependency Injection / Inversion of Control\n\u00b6\n\n\nIntroduction to Dependency Injection in ASP.NET Core\n - Microsoft page\n\n\nWhat and Why?\n\u00b6\n\n\n\n\nA \ndependency\n is another class that the code you are writing depends on.\n\n\n\n\nSay you are writing an app and you want to log certain performance information - maybe you get current weather data from a web service and you want to log how long each request takes. You write a class to do that logging and call it \nLogger\n with a \nLog(string message)\n method which writes your message to a file.\n\n\n1\n2\n3\n4\n5\n6\n7\npublic\n \nclass\n \nLogger\n\n\n{\n\n    \npublic\n \nvoid\n \nLog\n(\nstring\n \nmessage\n)\n\n    \n{\n\n        \n// write message to log file\n\n    \n}\n\n\n}\n\n\n\n\n\n\n\nHere is the class which gets the weather data and logs the time taken. \n\n\n 1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13\npublic\n \nclass\n \nMyClass\n\n\n{\n\n    \nprivate\n \nLogger\n \nlogger\n \n=\n \nnew\n \nLogger\n();\n\n\n    \npublic\n \nvoid\n \nGetWeather\n()\n\n    \n{\n\n        \nStopwatch\n \nsw\n \n=\n \nnew\n \nStopwatch\n();\n\n        \nsw\n.\nStart\n();\n\n        \n// Get weather info from web service ...\n\n        \nsw\n.\nStop\n();\n\n        \nlogger\n.\nLog\n(\n$\n\"Webservice time = {sw.Elapsed}\"\n);\n\n    \n}\n\n\n}\n\n\n\n\n\n\n\nYour \nMyClass\n object now \ndepends\n on the \nLogger\n class. The \nLogger\n class is hard-coded into you program. We say that there is 'tight coupling' between the \nMyClass\n and the \nLogger\n classes.\n\n\nNow this is all well and good for a small app that is not going to change, but has several drawbacks.\n\n\n\n\nIt is not easy to test \nMyClass\n without having to open up the log file to see what was actually written to it.\n\n\nIt is not easy to change the logger if we decide that instead of logging to a file we want to log to a database instead.\n\n\n\n\nIt would be nice if we could just write \nMyClass\n so that it could use any logger object that we decided to give it. The we could use a test logger for testing, another for logging to file, and another for writing the messages to a database, and so on. It would be really nice if, when we wrote \nMyClass\n, we didn't need to know anything about the logger that would ultimately be used other than all we had to do was pass it a message.\n\n\nThe problem, of course, is the line\n\n\nprivate Logger logger = new Logger();\n\n\nTo write this line of code we need a reference to the \nLogger\n class dependency, and once we have written it we can't change the logger without changing the \nMyClass\n source code. Instead of hard-coding the dependancy, we would like to be able to pass the dependency in to \nMyClass\n when we run our code.\n\n\nInterfaces\n\u00b6\n\n\nAn \nInterface\n difines the signatures of methods, properties, events or indexers of a class. A class or struct that implements the interface must implement the members of the interface that are specified in the interface definition.",
+            "title": "Programming concepts"
+        },
+        {
+            "location": "/programming-concepts/#programming-concepts",
+            "text": "",
+            "title": "Programming Concepts"
+        },
+        {
+            "location": "/programming-concepts/#dependency-injection-inversion-of-control",
+            "text": "Introduction to Dependency Injection in ASP.NET Core  - Microsoft page",
+            "title": "Dependency Injection / Inversion of Control"
+        },
+        {
+            "location": "/programming-concepts/#what-and-why",
+            "text": "A  dependency  is another class that the code you are writing depends on.   Say you are writing an app and you want to log certain performance information - maybe you get current weather data from a web service and you want to log how long each request takes. You write a class to do that logging and call it  Logger  with a  Log(string message)  method which writes your message to a file.  1\n2\n3\n4\n5\n6\n7 public   class   Logger  { \n     public   void   Log ( string   message ) \n     { \n         // write message to log file \n     }  }    Here is the class which gets the weather data and logs the time taken.    1\n 2\n 3\n 4\n 5\n 6\n 7\n 8\n 9\n10\n11\n12\n13 public   class   MyClass  { \n     private   Logger   logger   =   new   Logger (); \n\n     public   void   GetWeather () \n     { \n         Stopwatch   sw   =   new   Stopwatch (); \n         sw . Start (); \n         // Get weather info from web service ... \n         sw . Stop (); \n         logger . Log ( $ \"Webservice time = {sw.Elapsed}\" ); \n     }  }    Your  MyClass  object now  depends  on the  Logger  class. The  Logger  class is hard-coded into you program. We say that there is 'tight coupling' between the  MyClass  and the  Logger  classes.  Now this is all well and good for a small app that is not going to change, but has several drawbacks.   It is not easy to test  MyClass  without having to open up the log file to see what was actually written to it.  It is not easy to change the logger if we decide that instead of logging to a file we want to log to a database instead.   It would be nice if we could just write  MyClass  so that it could use any logger object that we decided to give it. The we could use a test logger for testing, another for logging to file, and another for writing the messages to a database, and so on. It would be really nice if, when we wrote  MyClass , we didn't need to know anything about the logger that would ultimately be used other than all we had to do was pass it a message.  The problem, of course, is the line  private Logger logger = new Logger();  To write this line of code we need a reference to the  Logger  class dependency, and once we have written it we can't change the logger without changing the  MyClass  source code. Instead of hard-coding the dependancy, we would like to be able to pass the dependency in to  MyClass  when we run our code.",
+            "title": "What and Why?"
+        },
+        {
+            "location": "/programming-concepts/#interfaces",
+            "text": "An  Interface  difines the signatures of methods, properties, events or indexers of a class. A class or struct that implements the interface must implement the members of the interface that are specified in the interface definition.",
+            "title": "Interfaces"
         }
     ]
 }
