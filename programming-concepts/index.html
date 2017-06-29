@@ -252,8 +252,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-solution" title="The Solution" class="md-nav__link">
+    The Solution
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-in-aspnet-core" title="Implementation in ASP.Net Core" class="md-nav__link">
+    Implementation in ASP.Net Core
+  </a>
   
 </li>
       
@@ -342,8 +356,22 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#the-solution" title="The Solution" class="md-nav__link">
+    The Solution
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation-in-aspnet-core" title="Implementation in ASP.Net Core" class="md-nav__link">
+    Implementation in ASP.Net Core
+  </a>
   
 </li>
       
@@ -599,8 +627,29 @@
 </pre></div>
 </td></tr></table>
 
-<p>is where we instantiate our <code class="codehilite">WeatherForecast</code> object and we have the logger hard coded into this line.</p>
-<p>An IoC Container takes on the job of instantiating our <code class="codehilite">WeatherForecast</code> class for us, and return to us an instance of <code class="codehilite">WaetherForecast</code> for us to use (complete with the correct logger passed into the constructor when the IoC Container created it)</p>
+<p>is where we instantiate our <code class="codehilite">WeatherForecast</code> object. The logger we are using is hard coded into this line which is inflexible and hard to maintain, especially where either of the above two points apply.</p>
+<h3 id="the-solution">The Solution<a class="headerlink" href="#the-solution" title="Permanent link">&para;</a></h3>
+<p>An IoC Container is a 'factory' which instantiates instances of classes for us, and in doing so also instantiates instances of all the dependencies that those classes need and injects them through the constructors. There are various different ways that such containers can be implemented, but the following is typical.</p>
+<p>First we create an instance of a container, and then we 'register' all the dependencies with it.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">IOContainer</span> <span class="n">iocContainer</span> <span class="p">=</span> <span class="k">new</span> <span class="n">IOCContainer</span><span class="p">();</span>
+
+<span class="n">iocContainer</span><span class="p">.</span><span class="n">AddService</span><span class="p">&lt;</span><span class="n">ILogger</span><span class="p">,</span> <span class="n">FileLogger</span><span class="p">&gt;();</span>
+</pre></div>
+</td></tr></table>
+
+<p>This code registers the concrete type <code class="codehilite">FileLogger</code> and tell the container to use a <code class="codehilite">FileLogger</code> wherever it needs a concrete implementation of <code class="codehilite">ILogger</code>.</p>
+<p>Then we can use the container to create an instance of our <code class="codehilite">WeatherForecast</code> class as follows.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">WeatherForcast</span> <span class="n">forecast</span> <span class="p">=</span> <span class="n">iocContainer</span><span class="p">.</span><span class="n">Resolve</span><span class="p">&lt;</span><span class="n">WeatherForecast</span><span class="p">&gt;();</span>
+</pre></div>
+</td></tr></table>
+
+<p>The container looks at the <code class="codehilite">WeatherForecast</code> class we have asked for and sees that in its constructor it needs an instance of an <code class="codehilite">ILogger</code>. It looks at what has been registered and sees that for an <code class="codehilite">ILogger</code> it needs to create an instance of the <code class="codehilite">FileLogger</code> class, which it does. It can now create an instance of the <code class="codehilite">WeatherForecast</code> class, passing the <code class="codehilite">FileLogger</code> to its constructor.</p>
+<p>When we want to change the logger, we only have to change it in the one place where we regisered it with the container, which is normally done right at the beginning of the program before anything else.</p>
+<p>Also, if there is a deep tree of nested dependencies (which is quite normal in many programs) the container will create instances of all the dependencies that are needed - all we need to do is register them.</p>
+<h2 id="implementation-in-aspnet-core">Implementation in ASP.Net Core<a class="headerlink" href="#implementation-in-aspnet-core" title="Permanent link">&para;</a></h2>
+<hr />
                 
                   
                 
