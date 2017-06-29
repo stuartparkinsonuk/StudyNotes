@@ -195,6 +195,30 @@
   </li>
 
     
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../links/" title="Links" class="md-nav__link">
+      Links
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href="../programming-concepts/" title="Programming concepts" class="md-nav__link">
+      Programming concepts
+    </a>
+  </li>
+
+    
   </ul>
 </nav>
                   </div>
@@ -245,10 +269,25 @@
                 
                 
                 <h1 id="aspnet-core-web-application">ASP.net Core Web Application<a class="headerlink" href="#aspnet-core-web-application" title="Permanent link">&para;</a></h1>
+<p>Visual Studio: New Project - ASP.NET CoreWeb Application (.NET Core)</p>
 <h2 id="programcs">Program.cs<a class="headerlink" href="#programcs" title="Permanent link">&para;</a></h2>
 <p><code class="codehilite">Program.cs</code> contains the <code class="codehilite">Main</code> method which is the application starting point.</p>
 <p>This uses <code class="codehilite">WebHostBuilder</code> to build a web hosting app using extension methods. The default <code class="codehilite">Program.cs</code> file created by the new project template is shown below.</p>
-<div class="codehilite"><pre><span></span> <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15</pre></div></td><td class="code"><div class="codehilite"><pre><span></span> <span class="k">public</span> <span class="k">class</span> <span class="nc">Program</span>
     <span class="p">{</span>
         <span class="k">public</span> <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
         <span class="p">{</span>
@@ -264,18 +303,21 @@
         <span class="p">}</span>
     <span class="p">}</span>
 </pre></div>
+</td></tr></table>
 
-<p><code class="codehilite"><span class="na">.UseKestrel</span><span class="p">()</span></code> - use the Kestrel web server (can change to use others) 
-<code class="codehilite"><span class="na">.UseContentRoot</span><span class="p">(</span><span class="no">Directory.GetCurrentDirectory</span><span class="p">())</span></code> - tells the server where the root directory for content is 
-<code class="codehilite">UseIISIntegration()</code> - 
-<code class="codehilite">UseStartup&lt;Startup&gt;()</code> - tells server which class to use for startup configuration (in this case the <code class="codehilite">Startup</code> class defined in <code class="codehilite">Startup.cs</code>)</p>
-<p><code class="codehilite">UseApplicationInsights()</code> -</p>
-<p><code class="codehilite">Build();</code> - now go and build us a webserver that we can run with <code class="codehilite">host.Run();</code></p>
+<p><code class="codehilite"><span class="na">.UseKestrel</span><span class="p">()</span></code> - use the Kestrel web server (can change to use others)<br />
+<code class="codehilite"><span class="na">.UseContentRoot</span><span class="p">(</span><span class="no">Directory.GetCurrentDirectory</span><span class="p">())</span></code> - tells the server where the root directory for content is<br />
+<code class="codehilite">UseIISIntegration()</code> -<br />
+<code class="codehilite">UseStartup&lt;Startup&gt;()</code> - tells server which class to use for startup configuration (in this case the <code class="codehilite">Startup</code> class defined in <code class="codehilite">Startup.cs</code>)<br />
+<code class="codehilite">UseApplicationInsights()</code> -<br />
+<code class="codehilite">Build();</code> - now go and build us a webserver that we can run with <code class="codehilite">host.Run();</code></p>
 <h2 id="startupcs">Startup.cs<a class="headerlink" href="#startupcs" title="Permanent link">&para;</a></h2>
 <p><code class="codehilite">Startup.cs</code> defines the request handling pipeline, and must contain the following methods:</p>
-<div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span> <span class="p">{...}</span>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">void</span> <span class="nf">ConfigureServices</span><span class="p">(</span><span class="n">IServiceCollection</span> <span class="n">services</span><span class="p">)</span> <span class="p">{...}</span>
 <span class="k">public</span> <span class="k">void</span> <span class="nf">Configure</span><span class="p">(</span><span class="n">IApplicationBuilder</span> <span class="n">app</span><span class="p">)</span> <span class="p">{...}</span>
 </pre></div>
+</td></tr></table>
                 
                   
                 
@@ -308,6 +350,20 @@
             </div>
           </a>
         
+        
+          <a href="../links/" title="Links" class="md-flex md-footer-nav__link md-footer-nav__link--next" rel="next">
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Next
+                </span>
+                Links
+              </span>
+            </div>
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-forward md-footer-nav__button"></i>
+            </div>
+          </a>
         
       </nav>
     </div>
