@@ -218,6 +218,40 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#constructor-injection" title="Constructor Injection" class="md-nav__link">
+    Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversion-of-control" title="Inversion of Control" class="md-nav__link">
+    Inversion of Control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ioc-containers" title="IoC Containers" class="md-nav__link">
+    IoC Containers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-problem-are-we-solving" title="What Problem are we Solving?" class="md-nav__link">
+    What Problem are we Solving?
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -270,6 +304,40 @@
           <li class="md-nav__item">
   <a href="#interfaces" title="Interfaces" class="md-nav__link">
     Interfaces
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#constructor-injection" title="Constructor Injection" class="md-nav__link">
+    Constructor Injection
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#inversion-of-control" title="Inversion of Control" class="md-nav__link">
+    Inversion of Control
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ioc-containers" title="IoC Containers" class="md-nav__link">
+    IoC Containers
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-problem-are-we-solving" title="What Problem are we Solving?" class="md-nav__link">
+    What Problem are we Solving?
   </a>
   
 </li>
@@ -332,7 +400,7 @@
 10
 11
 12
-13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">MyClass</span>
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">WeatherForecast</span>
 <span class="p">{</span>
     <span class="k">private</span> <span class="n">Logger</span> <span class="n">logger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Logger</span><span class="p">();</span>
 
@@ -348,18 +416,191 @@
 </pre></div>
 </td></tr></table>
 
-<p>Your <code class="codehilite">MyClass</code> object now <strong>depends</strong> on the <code class="codehilite">Logger</code> class. The <code class="codehilite">Logger</code> class is hard-coded into you program. We say that there is 'tight coupling' between the <code class="codehilite">MyClass</code> and the <code class="codehilite">Logger</code> classes.</p>
+<p>Your <code class="codehilite">WeatherForecast</code> object now <strong>depends</strong> on the <code class="codehilite">Logger</code> class. The <code class="codehilite">Logger</code> class is hard-coded into your program. We say that there is 'tight coupling' between the <code class="codehilite">WeatherForecast</code> and the <code class="codehilite">Logger</code> classes.</p>
 <p>Now this is all well and good for a small app that is not going to change, but has several drawbacks.</p>
 <ol>
-<li>It is not easy to test <code class="codehilite">MyClass</code> without having to open up the log file to see what was actually written to it.</li>
+<li>It is not easy to test <code class="codehilite">WeatherForecast</code> without having to open up the log file to see what was actually written to it.</li>
 <li>It is not easy to change the logger if we decide that instead of logging to a file we want to log to a database instead.</li>
 </ol>
-<p>It would be nice if we could just write <code class="codehilite">MyClass</code> so that it could use any logger object that we decided to give it. The we could use a test logger for testing, another for logging to file, and another for writing the messages to a database, and so on. It would be really nice if, when we wrote <code class="codehilite">MyClass</code>, we didn't need to know anything about the logger that would ultimately be used other than all we had to do was pass it a message.</p>
+<p>It would be nice if we could just write <code class="codehilite">WeatherForecast</code> so that it could use any logger object that we decided to give it. The we could use a test logger for testing, another for logging to file, and another for writing the messages to a database, and so on. It would be really nice if, when we wrote <code class="codehilite">WeatherForecast</code>, we didn't need to know anything about the logger that would ultimately be used other than all we had to do was pass it a message.</p>
 <p>The problem, of course, is the line</p>
 <p><code class="codehilite">private Logger logger = new Logger();</code></p>
-<p>To write this line of code we need a reference to the <code class="codehilite">Logger</code> class dependency, and once we have written it we can't change the logger without changing the <code class="codehilite">MyClass</code> source code. Instead of hard-coding the dependancy, we would like to be able to pass the dependency in to <code class="codehilite">MyClass</code> when we run our code.</p>
+<p>To write this line of code we hard code a reference to the <code class="codehilite">Logger</code> class, and once we have written it we can't change the logger without changing the <code class="codehilite">WeatherForecast</code> source code. Instead of hard-coding the dependancy, we would like to be able to pass the dependency in to <code class="codehilite">WeatherForecast</code> when we run our code.</p>
 <h3 id="interfaces">Interfaces<a class="headerlink" href="#interfaces" title="Permanent link">&para;</a></h3>
-<p>An <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface">Interface</a> difines the signatures of methods, properties, events or indexers of a class. A class or struct that implements the interface must implement the members of the interface that are specified in the interface definition.</p>
+<blockquote>
+<p>An <a href="https://docs.microsoft.com/en-us/dotnet/csharp/language-reference/keywords/interface">Interface</a> defines the signatures of methods, properties, events or indexers of a class. A class or struct that implements the interface must implement the members of the interface that are specified in the interface definition.</p>
+</blockquote>
+<p>An interface defines what a class will look like 'from the outside'. If a class implements a particular interface, you know that it will have the exact methods and properties etc. that are defined in the interface, with those exact parameters and types and return values. What goes on inside the class is none or your concern - what is important is that you know the interface and so you can use it in your program.</p>
+<p>Several different implementations of the interface might perform the task in completely different ways. For example, we could have one implementations of a logger interface which logs to file and another which logs to a database, but because they look exactly the same from the outside they can be used interchangeably in your program.</p>
+<p>First we need to define an interface that describes the essential public methods of our logger.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">interface</span> <span class="n">ILogger</span>
+<span class="p">{</span>
+    <span class="k">void</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>This interface dictates that anything that impements it must provide a <code class="codehilite">Log</code> method which takes a string as a parameter and returns a void.</p>
+<p>Now we can write a logger class which implements this interface.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6
+7</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">FileLogger</span> <span class="p">:</span> <span class="n">ILogger</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">Log</span><span class="p">(</span><span class="kt">string</span> <span class="n">message</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// code to write message to file</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<h3 id="constructor-injection">Constructor Injection<a class="headerlink" href="#constructor-injection" title="Permanent link">&para;</a></h3>
+<p>One simple form of dependency injection is 'Constructor Injection'. We pass the dependency that we want the class to use into to class through its constructor at the time we instantiate an instance of the class.</p>
+<p>Here is a modified version of our class which takes a logger object in its constructor, keeps a reference to it in a private variable, and uses that logger when it needs to log something.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">public</span> <span class="k">class</span> <span class="nc">WeatherForecast</span>
+<span class="p">{</span>
+    <span class="k">private</span> <span class="n">ILogger</span> <span class="n">logger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="nf">WeatherForecast</span><span class="p">(</span><span class="n">ILogger</span> <span class="n">specific_Logger_to_Use</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="n">logger</span> <span class="p">=</span> <span class="n">specific_Logger_to_Use</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">void</span> <span class="nf">GetWeather</span><span class="p">()</span>
+    <span class="p">{</span>
+        <span class="n">Stopwatch</span> <span class="n">sw</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Stopwatch</span><span class="p">();</span>
+        <span class="n">sw</span><span class="p">.</span><span class="n">Start</span><span class="p">();</span>
+        <span class="c1">// Get weather info from web service ...</span>
+        <span class="n">Thread</span><span class="p">.</span><span class="n">Sleep</span><span class="p">(</span><span class="m">1000</span><span class="p">);</span>
+        <span class="n">sw</span><span class="p">.</span><span class="n">Stop</span><span class="p">();</span>
+        <span class="n">logger</span><span class="p">.</span><span class="n">Log</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;Webservice time = {sw.Elapsed}&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Note in line 3 that our private variable is of type <code class="codehilite">ILogger</code>. We don't need to know which specific type of logger we are eventually going to get, just so long as it implements <code class="codehilite">ILogger</code>.</p>
+<p>When we instantiate our class we can pass it a file logger, an email logger, or any other logger that implements the <code class="codehilite">ILogger</code> interface. We can even make a mock logger that we can use during testing.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">class</span> <span class="nc">Program</span>
+<span class="p">{</span>
+    <span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// this time we are going to use a FileLogger</span>
+        <span class="n">FileLogger</span> <span class="n">fileLogger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileLogger</span><span class="p">();</span>
+
+        <span class="c1">// create a new instance of WeatherForecast and pass it the FileLogger to use</span>
+        <span class="n">WeatherForecast</span> <span class="n">forecast</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WeatherForecast</span><span class="p">(</span><span class="n">fileLogger</span><span class="p">);</span>
+
+        <span class="n">forecast</span><span class="p">.</span><span class="n">GetWeather</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Now <code class="codehilite">WeatherForecast</code> does not have to know which specific logger it is going to use - it only cares that when we come to use it we pass it a logger object that implements the <code class="codehilite">ILogger</code> interface. In this program we are giving it a <code class="codehilite">FileLogger</code>, but in another program we might give it a <code class="codehilite">DatabaseLogger</code> and we wouldn't have to change <code class="codehilite">WeatherForecast</code> at all.</p>
+<p>This is good because we can write <code class="codehilite">WeatherForecast</code>, test it, and tuck it away in a library somewhere and never have to touch it again. We can use it in lots of places, and each time we use it we can decide at the time which logger we want <code class="codehilite">WeatherForecast</code> to use.</p>
+<p>We have 'injected' the dependency into <code class="codehilite">WeatherForecast</code> at the time we instantiated it.</p>
+<h3 id="inversion-of-control">Inversion of Control<a class="headerlink" href="#inversion-of-control" title="Permanent link">&para;</a></h3>
+<p>IoC (<a href="https://martinfowler.com/bliki/InversionOfControl.html">Inversion of Control</a>) is a general programming principle where the flow of control through the program (which would normally have been under 'your' control) is 'inverted' so it is now under the control of a framework.</p>
+<p>For example, in traditional text based programming (such as a batch file or a console program) you might write something to get the users name and greet them.</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5
+6</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">static</span> <span class="k">void</span> <span class="nf">Main</span><span class="p">(</span><span class="kt">string</span><span class="p">[]</span> <span class="n">args</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">Write</span><span class="p">(</span><span class="s">&quot;Enter your name: &quot;</span><span class="p">);</span>
+    <span class="kt">string</span> <span class="n">name</span> <span class="p">=</span> <span class="n">Console</span><span class="p">.</span><span class="n">ReadLine</span><span class="p">();</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="err">$</span><span class="s">&quot;Welcome, {name}&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>The flow of the program is enitely under your control. You decide when to output to the console, and you decide when to read input from the console. It is your code that is running, and you make calls into other code (such as <code class="codehilite">Console.WriteLine</code>) when you need to.</p>
+<p>However, if you are using some kind of framework (Windows forms, ASP.NET, Android, etc.) you might have a form with a text entry box labelled 'Enter your name', a button labelled 'Next', and an empty label called response. Your code would look something like</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="k">private</span> <span class="k">void</span> <span class="nf">NextButton_Click</span><span class="p">(</span><span class="kt">object</span> <span class="n">sender</span><span class="p">,</span> <span class="n">RoutedEventArgs</span> <span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Response</span><span class="p">.</span><span class="n">Text</span> <span class="p">=</span> <span class="err">$</span><span class="s">&quot;Welcome, {NameEntry.Text}&quot;</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</td></tr></table>
+
+<p>Now it is <em>not</em> your code that is in control - the <em>framework</em> is in control. When the user runs the application, it is the framework code that is running, and when the user hits the 'Next' button the framework makes a call into your code through the event handler mechanism.</p>
+<p>You have handed control off to the framework and told it, "Call me when you need me to do something." This is also known as the <a href="http://deviq.com/hollywood-principle/">Hollywood Principle</a> - "Don't call us. We'll call you!"</p>
+<p>There are many forms that this inversion of control can take, but an important factor in all of them is that the framework code is already written and you don't want to be messing with it. Somehow you need to be able to get the framework to call your code when the framework designer, at the time the framework was written, had no idea that your code even existed (in fact, it probably didn't).</p>
+<p>Registering for events is one programming pattern which can achieve this. In the code above we have (elsewhere) told the framework which method to call when the button gets pushed. (Often this hookup is done behind the scenes by the graphical designer you use to create your form). When the button is pushed, the framework calls the <code class="codehilite">NextButton_Click</code> method to execute <em>our</em> code. The only stipulation is that the <code class="codehilite">NextButton_Click</code> method conforms to what the framework expects by way of parameters and return type for an event handler.</p>
+<p>Dependency Injection is just another method of Inversion of Control, where your code (say, the logger) gets called by some other code (maybe the framework, maybe some other bit of your code) that itself knows nothing about your logger. All you need to do is follow the rules (ie. implement the <code class="codehilite">ILogger</code> interface) and you can get the other code to call your code whenever it needs to.</p>
+<h2 id="ioc-containers">IoC Containers<a class="headerlink" href="#ioc-containers" title="Permanent link">&para;</a></h2>
+<p>We could just stop there, because with Dependency Injection we have all we need to 'decouple' (ie. make independent) parts of our code. We can write a <code class="codehilite">GetWeather</code> class which uses a logger, and we don't care which logger is used when we write the <code class="codehilite">GetWeather</code> class (as long as it implements <code class="codehilite">ILogger</code>). And we can write lots of other classes that use loggers, and write lots of different loggers, and mix and match to our heart's content. And many applications do just use manual Dependency Injection like this, where in the final application the desired logger service is supplied to each particular consumer class.</p>
+<p>However, we can go another step in automating this process by using what is called an IoC Container.</p>
+<p>The code behind an IoC Container (sometimes also called a DI Container) can get a little complex and we are not going to delve into it at all in this article. There are <a href="https://www.hanselman.com/blog/ListOfNETDependencyInjectionContainersIOC.aspx">many ready-made IoC Containers</a> available, and ASP.NET Core includes a simple one as part of the framework which is used so that <em>you</em> can tell the <em>framework</em> what you want it to use as (for example) a logger. You can pick one of the many existing classes or make your own. You can also use the IoC Container to handle dependency injection for your own code.</p>
+<h3 id="what-problem-are-we-solving">What Problem are we Solving?<a class="headerlink" href="#what-problem-are-we-solving" title="Permanent link">&para;</a></h3>
+<p>Earlier we used this code to instatiate a logger of our choice and pass it to <code class="codehilite">WeatherForecast</code></p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1
+2
+3
+4
+5</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="c1">// this time we are going to use a FileLogger</span>
+<span class="n">FileLogger</span> <span class="n">fileLogger</span> <span class="p">=</span> <span class="k">new</span> <span class="n">FileLogger</span><span class="p">();</span>
+
+<span class="c1">// create a new instance of WeatherForecast and pass it the FileLogger to use</span>
+<span class="n">WeatherForecast</span> <span class="n">forecast</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WeatherForecast</span><span class="p">(</span><span class="n">fileLogger</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>There are two possible problems with this.</p>
+<ol>
+<li>We might use this bit of code (or a bit very similar) in many places. If we wanted to change loggers to use the database logger instead we would have a lot of places to go and change our code.</li>
+<li>The above example is very simple because although the <code class="codehilite">WeatherForecast</code> class has a dependency on a logger, the logger does not have a dependency on anything else. This is often not the case. Maybe our database logger needs a database object in it's constructor (and there may be several different types of database we could pass it), and each database object needs a connection string passed into it's constructor. Quite soon we end up with a complex 'dependency graph' - a large tree of objects depending on objects depending on objects.</li>
+</ol>
+<p>In the code above, the line</p>
+<table class="codehilitetable"><tr><td class="linenos"><div class="linenodiv"><pre>1</pre></div></td><td class="code"><div class="codehilite"><pre><span></span><span class="n">WeatherForecast</span> <span class="n">forecast</span> <span class="p">=</span> <span class="k">new</span> <span class="n">WeatherForecast</span><span class="p">(</span><span class="n">fileLogger</span><span class="p">);</span>
+</pre></div>
+</td></tr></table>
+
+<p>is where we instantiate our <code class="codehilite">WeatherForecast</code> object and we have the logger hard coded into this line.</p>
+<p>An IoC Container takes on the job of instantiating our <code class="codehilite">WeatherForecast</code> class for us, and return to us an instance of <code class="codehilite">WaetherForecast</code> for us to use (complete with the correct logger passed into the constructor when the IoC Container created it)</p>
                 
                   
                 
