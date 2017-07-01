@@ -1,5 +1,6 @@
 site_name: My Docs
 theme: 'material'
+google_analytics: ['UA-101872482-1', 'auto']
 markdown_extensions:
   - admonition
   - codehilite(linenums=true)
